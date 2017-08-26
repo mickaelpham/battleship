@@ -10,6 +10,41 @@ class Battleship::Ship
     VERTICAL   = 1
   end
 
+  # A carrier is a 5 cells ship
+  class Carrier < Battleship::Ship
+    def initialize
+      super(5)
+    end
+  end
+
+  # A warship is a 4 cells ship
+  class Warship < Battleship::Ship
+    def initialize
+      super(4)
+    end
+  end
+
+  # A cruiser is a 3 cells ship
+  class Cruiser < Battleship::Ship
+    def initialize
+      super(3)
+    end
+  end
+
+  # A submarine is a 3 cells ship
+  class Submarine < Battleship::Ship
+    def initialize
+      super(3)
+    end
+  end
+
+  # A destroyer is a 2 cells ship
+  class Destroyer < Battleship::Ship
+    def initialize
+      super(2)
+    end
+  end
+
   def initialize(size)
     @size       = size
     @hit_points = size
@@ -26,12 +61,12 @@ class Battleship::Ship
   def place_horizontally(at)
     @origin    = at
     @alignment = Alignment::HORIZONTAL
-    [at[0] + @size, at[1]]
+    [at[0], at[1] + @size - 1]
   end
 
   def place_vertically(at)
     @origin    = at
     @alignment = Alignment::VERTICAL
-    [at[0], at[1] + @size]
+    [at[0] + @size - 1, at[1]]
   end
 end

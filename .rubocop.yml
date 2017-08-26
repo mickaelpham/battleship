@@ -1,5 +1,6 @@
 AllCops:
   TargetRubyVersion: 2.4
+  DisplayCopNames: true
 
 Layout/AlignHash:
   EnforcedHashRocketStyle: table
@@ -10,3 +11,7 @@ Layout/DotPosition:
 
 Style/ClassAndModuleChildren:
   EnforcedStyle: compact
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'

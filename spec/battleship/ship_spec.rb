@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Battleship::Ship do
   let(:size)   { 5 }
   let(:ship) { described_class.new(size) }
