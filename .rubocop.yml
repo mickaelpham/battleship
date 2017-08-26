@@ -7,3 +7,6 @@ Layout/AlignHash:
 
 Layout/DotPosition:
   EnforcedStyle: trailing
+
+Style/ClassAndModuleChildren:
+  EnforcedStyle: compact
