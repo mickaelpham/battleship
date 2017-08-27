@@ -25,14 +25,14 @@ class Battleship::Screen
     puts '|        B A T T L E S H I P        |'
     puts '+-----------------------------------+'
     puts
-    puts 'Press "Enter" to start a new game'
+    puts 'Press "Enter" to start a new game'.yellow
     gets
   end
 
   def self.players_prompt
     clear
     Battleship::Game::PLAYERS.times.with_object([]) do |player, names|
-      puts "Player #{player + 1}’s name:"
+      puts "Player #{player + 1}’s name:".yellow
       names << gets.chomp
       puts
     end
@@ -97,9 +97,9 @@ class Battleship::Screen
     display_current_player
     display_player_grid
     puts "\nEnter the starting position of your #{ship.name} with a size of " \
-      "#{ship.size} cells (e.g., B3):"
+      "#{ship.size} cells (e.g., B3):".yellow
     position = parse_position(gets.chomp)
-    puts "\nPlace the ship (V)ertically or (H)orizontally?"
+    puts "\nPlace the ship (V)ertically or (H)orizontally?".yellow
     input = gets.chomp
     alignment = if input.casecmp('v').zero?
                   Battleship::Ship::Alignment::VERTICAL
@@ -115,7 +115,8 @@ class Battleship::Screen
     Battleship::Screen.clear
     display_current_player
     display_player_grid
-    puts "\nPress \"Enter\" to switch to the other player or start the game"
+    puts "\nPress \"Enter\" to switch to the other player or start the" \
+      'game'.yellow
     gets
   end
 
@@ -123,7 +124,7 @@ class Battleship::Screen
     Battleship::Screen.clear
     display_current_player
     display_opponent_grid
-    puts "\nStrike at (e.g., C4):"
+    puts "\nStrike at (e.g., C4):".yellow
     parse_position(gets.chomp)
   end
 
@@ -133,17 +134,20 @@ class Battleship::Screen
     display_opponent_grid
 
     if shot == Battleship::Grid::Cell::HIT
-      puts "\nHIT YA!!\n\nPress \"Enter\" to fire another shot."
+      puts "\nHIT YA!!".green
+      puts "\n\nPress \"Enter\" to fire another shot.".yellow
     else
-      puts "\nMiss :(\n\nPress \"Enter\" to switch to the other player"
+      puts "\nMiss :(\n\nPress \"Enter\" to switch to the other player".yellow
     end
 
     gets
   end
 
   def victory
-    puts "\n\nWINNER WINNER CHICKEN DINNER!"
-    puts "\n#{player.name} won the game!\n"
+    Battleship::Screen.clear
+    puts "\n\n=== WINNER WINNER CHICKEN DINNER! ===".green
+    puts "\n--> #{player.name} won the game!\n".green
+    puts "\n\nPress \"Enter\" to quit"
     gets
   end
 
