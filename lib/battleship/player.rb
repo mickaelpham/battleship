@@ -41,8 +41,7 @@ class Battleship::Player
     screen.strike_result(shot)
     shot
   rescue Battleship::Grid::Error, Battleship::Screen::Error
-    puts "Wrong coordinate for the strike.\n\nPress \"Enter\" to retry"
-    gets
+    Battleship::Screen.coordinates_error_prompt
     retry
   end
 
@@ -56,8 +55,7 @@ class Battleship::Player
       grid.place_horizontally(ship, position)
     end
   rescue Battleship::Grid::Error, Battleship::Screen::Error
-    puts "The ship (or part of it) is off the grid.\n\nPress \"Enter\" to retry"
-    gets
+    Battleship::Screen.ship_off_the_grid
     retry
   end
 end

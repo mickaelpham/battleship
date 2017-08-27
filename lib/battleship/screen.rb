@@ -137,6 +137,17 @@ class Battleship::Screen
     print "     ---------------------\n"
   end
 
+  def self.coordinates_error_prompt
+    puts "Wrong coordinate for the strike.\n\nPress \"Enter\" to retry".yellow
+    gets
+  end
+
+  def self.ship_off_the_grid
+    puts "The ship (or part of it) is off the grid.\n\nPress \"Enter\" " \
+      "to retry".yellow
+    gets
+  end
+
   attr_reader :player
 
   def initialize(player)
