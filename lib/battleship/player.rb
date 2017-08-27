@@ -37,6 +37,7 @@ class Battleship::Player
     screen.switch_setup_next_player_prompt
   end
 
+  # :reek:TooManyStatements { enabled: false }
   def turn
     position = screen.strike_prompt
     shot     = opponent.grid.strike(position[0], position[1])

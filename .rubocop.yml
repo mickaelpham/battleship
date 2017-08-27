@@ -23,3 +23,8 @@ Metrics/ClassLength:
 Metrics/MethodLength:
   Exclude:
     - 'lib/battleship/screen.rb'
+
+Metrics/AbcSize:
+  Exclude:
+    - 'lib/battleship/screen.rb'
+    - 'lib/battleship/game.rb'

@@ -18,7 +18,7 @@ class Battleship::Game
       players << Battleship::Player.new(name)
     end
 
-    # TODO find a cleaner way to set the opponents
+    # TODO: find a cleaner way to set the opponents
     players[0].opponent = players[1]
     players[1].opponent = players[0]
 
@@ -29,10 +29,12 @@ class Battleship::Game
 
   private
 
+  # :reek:DuplicateMethodCall { enabled: false }
+  # :reek:FeatureEnvy { enabled: false }
   def run
     current_player = players.first
     turn = 0
-    while (!current_player.won?)
+    until current_player.won?
       if current_player.turn == Battleship::Grid::Cell::MISS
         turn += 1
         current_player = players[turn % players.length]

@@ -188,6 +188,6 @@ class Battleship::Screen
     # TODO: stronger user input validation
     row = letter.ord - 'A'.ord
     col = input[1..-1].to_i
-    [row, col-1]
+    [row, col - 1]
   end
 end
