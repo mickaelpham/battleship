@@ -15,3 +15,11 @@ Style/ClassAndModuleChildren:
 Metrics/BlockLength:
   Exclude:
     - 'spec/**/*'
+
+Metrics/ClassLength:
+  Exclude:
+    - 'lib/battleship/screen.rb'
+
+Metrics/MethodLength:
+  Exclude:
+    - 'lib/battleship/screen.rb'

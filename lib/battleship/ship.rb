@@ -58,6 +58,10 @@ class Battleship::Ship
     @hit_points -= 1
   end
 
+  def name
+    self.class.name.split('::').last.downcase
+  end
+
   def place_horizontally(at)
     @origin    = at
     @alignment = Alignment::HORIZONTAL

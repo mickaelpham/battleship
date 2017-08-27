@@ -16,6 +16,7 @@ class Battleship::Grid
     EMPTY = 0
     MISS  = 1
     HIT   = 2
+    SHIP  = 3
   end
 
   attr_reader :rows, :cols, :matrix, :ships
