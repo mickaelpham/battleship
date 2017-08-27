@@ -1,40 +1,46 @@
 ---
 Attribute:
   exclude:
-    - 'Player#opponent'
+    - 'Battleship::Player#opponent'
 
 ControlParameter:
   exclude:
-    - 'Screen#strike_result'
+    - 'Battleship::Screen#strike_result'
 
 DuplicateMethodCall:
   exclude:
-    - 'Game#initialize'
-    - 'Game#run'
-    - 'Screen#display_opponent_grid'
-    - 'Screen#display_player_grid'
-    - 'Screen#self.start'
-    - 'Screen#ship_prompt'
+    - 'Battleship::Game#initialize'
+    - 'Battleship::Game#run'
+    - 'Battleship::Screen#display_opponent_grid'
+    - 'Battleship::Screen#display_player_grid'
+    - 'Battleship::Screen#self.start'
+    - 'Battleship::Screen#self.grid_masked_row_with_ship'
+    - 'Battleship::Screen#ship_prompt'
 
 FeatureEnvy:
   exclude:
-    - 'Game#run'
-    - 'Grid#occupied?'
-    - 'Screen#parse_position'
+    - 'Battleship::Game#run'
+    - 'Battleship::Grid#occupied?'
+    - 'Battleship::Screen#parse_position'
 
 NestedIterators:
   exclude:
-    - 'Grid#place'
-    - 'Grid#occupied?'
+    - 'Battleship::Grid#place'
+    - 'Battleship::Grid#occupied?'
+
+RepeatedConditional:
+  exclude:
+    - 'Battleship::Screen'
 
 TooManyStatements:
   exclude:
-    - 'Game#initialize'
-    - 'Grid#strike'
-    - 'Player#turn'
-    - 'Player#setup_ship'
-    - 'Screen#self.grid_masked_row'
-    - 'Screen#self.grid_row'
-    - 'Screen#self.start'
-    - 'Screen#ship_prompt'
-    - 'Screen#strike_result'
+    - 'Battleship::Game#initialize'
+    - 'Battleship::Grid#strike'
+    - 'Battleship::Player#turn'
+    - 'Battleship::Player#setup_ship'
+    - 'Battleship::Screen#self.grid_masked_row'
+    - 'Battleship::Screen#self.grid_row'
+    - 'Battleship::Screen#self.start'
+    - 'Battleship::Screen#display_opponent_grid'
+    - 'Battleship::Screen#ship_prompt'
+    - 'Battleship::Screen#strike_result'

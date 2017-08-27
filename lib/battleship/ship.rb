@@ -59,7 +59,7 @@ class Battleship::Ship
   end
 
   def name
-    self.class.name.split('::').last.downcase
+    self.class.name.split('::').last
   end
 
   def place_horizontally(at)

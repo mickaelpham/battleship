@@ -54,6 +54,14 @@ class Battleship::Screen
     puts
   end
 
+  def self.grid_headers_with_enemy_ships
+    print '  '
+    Battleship::Game::COLS.times do |col|
+      printf '%4d  ', col + 1
+    end
+    puts '      Enemy Ships'
+  end
+
   def self.grid_row(row, index)
     print "#{('A'.ord + index).chr} "
     row.each do |cell|
@@ -80,10 +88,46 @@ class Battleship::Screen
     print "|\n"
   end
 
+  def self.grid_masked_row_with_ship(row, index, ship)
+    print "#{('A'.ord + index).chr} "
+    row.each do |cell|
+      symbol = if cell.is_a?(Battleship::Ship)
+                 SYMBOLS[Battleship::Grid::Cell::EMPTY]
+               else
+                 SYMBOLS[cell]
+               end
+      print "|  #{symbol}  "
+    end
+    print '|'
+
+    if ship.destroyed?
+      printf "     %-9s (destroyed)\n".red, ship.name
+    else
+      printf(
+        "     %-9s   (HP: %d/%d)\n".green,
+        ship.name,
+        ship.hit_points,
+        ship.size
+      )
+    end
+  end
+
   def self.row_separator
     print '  +'
     print '-----+' * Battleship::Game::COLS
     print "\n"
+  end
+
+  def self.row_separator_header_with_enemy_ships
+    print '  +'
+    print '-----+' * Battleship::Game::COLS
+    print "     =====================\n"
+  end
+
+  def self.row_separator_with_enemy_ships
+    print '  +'
+    print '-----+' * Battleship::Game::COLS
+    print "     ---------------------\n"
   end
 
   attr_reader :player
@@ -115,7 +159,7 @@ class Battleship::Screen
     Battleship::Screen.clear
     display_current_player
     display_player_grid
-    puts "\nPress \"Enter\" to switch to the other player or start the" \
+    puts "\nPress \"Enter\" to switch to the other player or start the " \
       'game'.yellow
     gets
   end
@@ -154,7 +198,7 @@ class Battleship::Screen
   private
 
   def display_current_player
-    puts "Player: #{player.name}\n\n"
+    puts "Player: #{player.name.light_white}\n\n"
   end
 
   def display_player_grid
@@ -167,10 +211,22 @@ class Battleship::Screen
   end
 
   def display_opponent_grid
-    Battleship::Screen.grid_headers
+    Battleship::Screen.grid_headers_with_enemy_ships
     player.opponent.grid.matrix.each_with_index do |row, index|
-      Battleship::Screen.row_separator
-      Battleship::Screen.grid_masked_row(row, index)
+      if index.zero?
+        Battleship::Screen.row_separator_header_with_enemy_ships
+      elsif index < player.opponent.ships.size
+        Battleship::Screen.row_separator_with_enemy_ships
+      else
+        Battleship::Screen.row_separator
+      end
+
+      if index < player.opponent.ships.size
+        ship = player.opponent.ships[index]
+        Battleship::Screen.grid_masked_row_with_ship(row, index, ship)
+      else
+        Battleship::Screen.grid_masked_row(row, index)
+      end
     end
     Battleship::Screen.row_separator
   end
