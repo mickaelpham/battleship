@@ -19,8 +19,6 @@ class Battleship::Screen
     Battleship::Grid::Cell::SHIP  => '#'.green
   }.freeze
 
-  # :reek:TooManyStatements { enabled: false }
-  # :reek:DuplicateMethodCall { enabled: false }
   def self.start
     clear
     puts '+-----------------------------------+'
@@ -56,7 +54,6 @@ class Battleship::Screen
     puts
   end
 
-  # :reek:TooManyStatements { enabled: false }
   def self.grid_row(row, index)
     print "#{('A'.ord + index).chr} "
     row.each do |cell|
@@ -70,7 +67,6 @@ class Battleship::Screen
     print "|\n"
   end
 
-  # :reek:TooManyStatements { enabled: false }
   def self.grid_masked_row(row, index)
     print "#{('A'.ord + index).chr} "
     row.each do |cell|
@@ -96,8 +92,6 @@ class Battleship::Screen
     @player = player
   end
 
-  # :reek:DuplicateMethodCall { enabled: false }
-  # :reek:TooManyStatements { enabled: false }
   def ship_prompt(ship)
     Battleship::Screen.clear
     display_current_player
@@ -133,8 +127,6 @@ class Battleship::Screen
     parse_position(gets.chomp)
   end
 
-  # :reek:ControlParameter { enabled: false }
-  # :reek:TooManyStatements { enabled: false }
   def strike_result(shot)
     Battleship::Screen.clear
     display_current_player
@@ -161,7 +153,6 @@ class Battleship::Screen
     puts "Player: #{player.name}\n\n"
   end
 
-  # :reek:DuplicateMethodCall { enabled: false }
   def display_player_grid
     Battleship::Screen.grid_headers
     player.grid.matrix.each_with_index do |row, index|
@@ -171,7 +162,6 @@ class Battleship::Screen
     Battleship::Screen.row_separator
   end
 
-  # :reek:DuplicateMethodCall { enabled: false }
   def display_opponent_grid
     Battleship::Screen.grid_headers
     player.opponent.grid.matrix.each_with_index do |row, index|
@@ -181,11 +171,9 @@ class Battleship::Screen
     Battleship::Screen.row_separator
   end
 
-  # :reek:FeatureEnvy { enabled: false }
   def parse_position(input)
     raise PositionInputError unless [2, 3].include?(input.length)
     letter = input[0].upcase
-    # TODO: stronger user input validation
     row = letter.ord - 'A'.ord
     col = input[1..-1].to_i
     [row, col - 1]

@@ -5,7 +5,6 @@
 class Battleship::Player
   attr_reader :grid, :name, :ships, :screen
 
-  # :reek:Attribute { enabled: false }
   attr_accessor :opponent
 
   def initialize(name)
@@ -31,13 +30,11 @@ class Battleship::Player
     ships.all?(&:destroyed?)
   end
 
-  # :reek:DuplicateMethodCall { enabled: false }
   def setup
     ships.each { |ship| setup_ship(ship) }
     screen.switch_setup_next_player_prompt
   end
 
-  # :reek:TooManyStatements { enabled: false }
   def turn
     position = screen.strike_prompt
     shot     = opponent.grid.strike(position[0], position[1])
@@ -51,7 +48,6 @@ class Battleship::Player
 
   private
 
-  # :reek:TooManyStatements { enabled: false }
   def setup_ship(ship)
     position, alignment = screen.ship_prompt(ship)
     if alignment == Battleship::Ship::Alignment::VERTICAL

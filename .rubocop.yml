@@ -23,6 +23,7 @@ Metrics/ClassLength:
 Metrics/MethodLength:
   Exclude:
     - 'lib/battleship/screen.rb'
+    - 'lib/battleship/grid.rb'
 
 Metrics/AbcSize:
   Exclude:

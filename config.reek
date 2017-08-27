@@ -1,0 +1,40 @@
+---
+Attribute:
+  exclude:
+    - 'Player#opponent'
+
+ControlParameter:
+  exclude:
+    - 'Screen#strike_result'
+
+DuplicateMethodCall:
+  exclude:
+    - 'Game#initialize'
+    - 'Game#run'
+    - 'Screen#display_opponent_grid'
+    - 'Screen#display_player_grid'
+    - 'Screen#self.start'
+    - 'Screen#ship_prompt'
+
+FeatureEnvy:
+  exclude:
+    - 'Game#run'
+    - 'Grid#occupied?'
+    - 'Screen#parse_position'
+
+NestedIterators:
+  exclude:
+    - 'Grid#place'
+    - 'Grid#occupied?'
+
+TooManyStatements:
+  exclude:
+    - 'Game#initialize'
+    - 'Grid#strike'
+    - 'Player#turn'
+    - 'Player#setup_ship'
+    - 'Screen#self.grid_masked_row'
+    - 'Screen#self.grid_row'
+    - 'Screen#self.start'
+    - 'Screen#ship_prompt'
+    - 'Screen#strike_result'

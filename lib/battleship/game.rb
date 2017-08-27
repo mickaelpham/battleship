@@ -8,7 +8,6 @@ class Battleship::Game
 
   attr_reader :players
 
-  # :reek:DuplicateMethodCall { enabled: false }
   def initialize
     Battleship::Screen.start
 
@@ -29,8 +28,6 @@ class Battleship::Game
 
   private
 
-  # :reek:DuplicateMethodCall { enabled: false }
-  # :reek:FeatureEnvy { enabled: false }
   def run
     current_player = players.first
     turn = 0

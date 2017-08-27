@@ -44,8 +44,6 @@ class Battleship::Grid
     @ships << ship
   end
 
-  # :reek:TooManyStatements { enabled: false }
-  # rubocop:disable Metrics/MethodLength
   def strike(row, col)
     raise PositionError if out?([row, col])
 
@@ -61,7 +59,6 @@ class Battleship::Grid
       cell
     end
   end
-  # rubocop:enable Metrics/MethodLength
 
   def all_destroyed?
     @ships.all?(&:destroyed?)
@@ -75,7 +72,6 @@ class Battleship::Grid
     row.negative? || row >= rows || col.negative? || col >= cols
   end
 
-  # :reek:NestedIterators { enabled: false }
   def place(bow, stern, ship)
     raise CellNotEmptyError if occupied?(bow, stern)
     (bow[0]..stern[0]).each do |row|
@@ -85,8 +81,6 @@ class Battleship::Grid
     end
   end
 
-  # :reek:FeatureEnvy { enabled: false }
-  # :reek:NestedIterators { enabled: false }
   def occupied?(bow, stern)
     (bow[0]..stern[0]).each do |row|
       (bow[1]..stern[1]).each do |col|
