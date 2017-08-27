@@ -49,7 +49,7 @@ class Battleship::Screen
   def self.grid_headers
     print '  '
     Battleship::Game::COLS.times do |col|
-      printf '%4d  ', col + 1
+      printf '%4d  '.light_white, col + 1
     end
     puts
   end
@@ -57,13 +57,13 @@ class Battleship::Screen
   def self.grid_headers_with_enemy_ships
     print '  '
     Battleship::Game::COLS.times do |col|
-      printf '%4d  ', col + 1
+      printf '%4d  '.light_white, col + 1
     end
     puts '      Enemy Ships'
   end
 
   def self.grid_row(row, index)
-    print "#{('A'.ord + index).chr} "
+    print "#{('A'.ord + index).chr} ".light_white
     row.each do |cell|
       symbol = if cell.is_a?(Battleship::Ship)
                  SYMBOLS[Battleship::Grid::Cell::SHIP]
@@ -76,7 +76,7 @@ class Battleship::Screen
   end
 
   def self.grid_masked_row(row, index)
-    print "#{('A'.ord + index).chr} "
+    print "#{('A'.ord + index).chr} ".light_white
     row.each do |cell|
       symbol = if cell.is_a?(Battleship::Ship)
                  SYMBOLS[Battleship::Grid::Cell::EMPTY]
@@ -89,7 +89,7 @@ class Battleship::Screen
   end
 
   def self.grid_masked_row_with_ship(row, index, ship)
-    print "#{('A'.ord + index).chr} "
+    print "#{('A'.ord + index).chr} ".light_white
     row.each do |cell|
       symbol = if cell.is_a?(Battleship::Ship)
                  SYMBOLS[Battleship::Grid::Cell::EMPTY]
@@ -102,6 +102,13 @@ class Battleship::Screen
 
     if ship.destroyed?
       printf "     %-9s (destroyed)\n".red, ship.name
+    elsif ship.hit_points < ship.size
+      printf(
+        "     %-9s   (HP: %d/%d)\n".yellow,
+        ship.name,
+        ship.hit_points,
+        ship.size
+      )
     else
       printf(
         "     %-9s   (HP: %d/%d)\n".green,
@@ -178,8 +185,13 @@ class Battleship::Screen
     display_opponent_grid
 
     if shot == Battleship::Grid::Cell::HIT
-      puts "\nHIT YA!!".green
-      puts "\n\nPress \"Enter\" to fire another shot.".yellow
+      puts "\nHIT YA!!!".green
+
+      if player.won?
+        puts "\n\nPress \"Enter\" to continue.".yellow
+      else
+        puts "\n\nPress \"Enter\" to fire another shot.".yellow
+      end
     else
       puts "\nMiss :(\n\nPress \"Enter\" to switch to the other player".yellow
     end
@@ -190,7 +202,9 @@ class Battleship::Screen
   def victory
     Battleship::Screen.clear
     puts "\n\n=== WINNER WINNER CHICKEN DINNER! ===".green
-    puts "\n--> #{player.name} won the game!\n".green
+    print "\n--> ".green
+    print "#{player.name}".light_white
+    print " won the game!\n".green
     puts "\n\nPress \"Enter\" to quit"
     gets
   end
