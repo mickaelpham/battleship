@@ -4,11 +4,29 @@ A classic guessing game for two players.
 
 ## Screenshots
 
-Prompt for placing a ship on the grid:
-![screen-01](/img/screen-01.png?raw=true "Ship placing prompt")
+Welcome screen
 
-Prompt a player for a target to strike:
-![screen-02](/img/screen-02.png?raw=true "Strike prompt")
+![screen-01](/img/screen-01.png?raw=true "Welcome screen")
+
+Players prompt
+
+![screen-02](/img/screen-02.png?raw=true "Players prompt")
+
+Ship positioning
+
+![screen-03](/img/screen-03.png?raw=true "Ship positioning")
+
+Strike result
+
+![screen-04](/img/screen-04.png?raw=true "Strike result")
+
+Last strike
+
+![screen-05](/img/screen-05.png?raw=true "Last strike")
+
+Winning screen
+
+![screen-06](/img/screen-06.png?raw=true "Winning screen")
 
 ## Installation
 
