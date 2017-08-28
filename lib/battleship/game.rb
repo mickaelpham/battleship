@@ -24,6 +24,8 @@ class Battleship::Game
     @players.each(&:setup)
 
     run
+  rescue Interrupt
+    puts "\n\nQuitting Battleship #{Battleship::VERSION} by Mickael Pham"
   end
 
   private
