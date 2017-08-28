@@ -44,3 +44,4 @@ TooManyStatements:
     - 'Battleship::Screen#display_opponent_grid'
     - 'Battleship::Screen#ship_prompt'
     - 'Battleship::Screen#strike_result'
+    - 'Battleship::Screen#victory'

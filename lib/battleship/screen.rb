@@ -144,7 +144,7 @@ class Battleship::Screen
 
   def self.ship_off_the_grid
     puts "The ship (or part of it) is off the grid.\n\nPress \"Enter\" " \
-      "to retry".yellow
+      'to retry'.yellow
     gets
   end
 
@@ -214,7 +214,7 @@ class Battleship::Screen
     Battleship::Screen.clear
     puts "\n\n=== WINNER WINNER CHICKEN DINNER! ===".green
     print "\n--> ".green
-    print "#{player.name}".light_white
+    print player.name.light_white
     print " won the game!\n".green
     puts "\n\nPress \"Enter\" to quit"
     gets
