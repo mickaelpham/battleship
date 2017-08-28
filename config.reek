@@ -9,7 +9,7 @@ ControlParameter:
 
 DuplicateMethodCall:
   exclude:
-    - 'Battleship::Game#initialize'
+    - 'Battleship::Game#players_setup'
     - 'Battleship::Game#run'
     - 'Battleship::Screen#display_opponent_grid'
     - 'Battleship::Screen#display_player_grid'

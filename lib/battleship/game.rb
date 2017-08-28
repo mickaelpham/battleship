@@ -12,16 +12,9 @@ class Battleship::Game
     Battleship::Screen.start
 
     names = Battleship::Screen.players_prompt
-
     @players = names.each.with_object([]) do |name, players|
       players << Battleship::Player.new(name)
     end
-
-    # TODO: find a cleaner way to set the opponents
-    players[0].opponent = players[1]
-    players[1].opponent = players[0]
-
-    @players.each(&:setup)
 
     run
   rescue Interrupt
@@ -29,6 +22,13 @@ class Battleship::Game
   end
 
   private
+
+  def players_setup
+    # TODO: find a cleaner way to set the opponents
+    players[0].opponent = players[1]
+    players[1].opponent = players[0]
+    players.each(&:setup)
+  end
 
   def run
     current_player = players.first
