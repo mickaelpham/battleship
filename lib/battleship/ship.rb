@@ -54,6 +54,10 @@ class Battleship::Ship
     @hit_points.zero?
   end
 
+  def destroy
+    @hit_points = 0
+  end
+
   def hit
     @hit_points -= 1
   end

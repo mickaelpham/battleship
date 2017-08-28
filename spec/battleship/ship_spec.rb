@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'spec_helper'
+
 RSpec.shared_examples 'a ship' do
   let(:ship) { described_class.new }
 
@@ -11,6 +13,14 @@ RSpec.shared_examples 'a ship' do
   describe '#hit' do
     it 'removes 1 HP' do
       expect { ship.hit }.to change(ship, :hit_points).by(-1)
+    end
+  end
+
+  describe '#destroy' do
+    subject(:destroy) { ship.destroy }
+
+    specify do
+      expect { destroy }.to change(ship, :destroyed?).from(false).to(true)
     end
   end
 
