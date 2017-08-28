@@ -1,6 +1,24 @@
+[![Build Status](https://travis-ci.org/mickaelpham/battleship.svg?branch=master)](https://travis-ci.org/mickaelpham/battleship)
+
 # Battleship
 
 A classic guessing game for two players.
+
+## Installation
+
+```sh
+git clone https://github.com/mickaelpham/battleship
+bundle install
+gem build battleship.gemspec
+gem install battleship-0.1.0.gem
+```
+
+This should take care of installing the `battleship` executable in your `PATH`,
+allowing you to start a new game from the shell:
+
+```
+$ battleship
+```
 
 ## Screenshots
 
@@ -28,7 +46,7 @@ Winning screen
 
 ![screen-06](/img/screen-06.png?raw=true "Winning screen")
 
-## Installation
+## Development
 
 ```sh
 git clone https://github.com/mickaelpham/battleship
