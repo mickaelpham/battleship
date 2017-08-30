@@ -2,4 +2,8 @@
 # frozen_string_literal: true
 
 require 'battleship'
-Battleship::Game.new
+
+begin
+  Battleship::Game.new.run
+rescue Interrupt
+end

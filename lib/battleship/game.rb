@@ -16,18 +16,10 @@ class Battleship::Game
       players << Battleship::Player.new(name)
     end
 
-    run
+    players_setup
   rescue Interrupt
-    puts "\n\nQuitting Battleship #{Battleship::VERSION} by Mickael Pham"
-  end
-
-  private
-
-  def players_setup
-    # TODO: find a cleaner way to set the opponents
-    players[0].opponent = players[1]
-    players[1].opponent = players[0]
-    players.each(&:setup)
+    Battleship::Screen.bye
+    raise
   end
 
   def run
@@ -37,9 +29,21 @@ class Battleship::Game
       if current_player.turn == Battleship::Grid::Cell::MISS
         turn += 1
         current_player = players[turn % players.length]
+      elsif current_player.won?
+        current_player.screen.victory
       end
-
-      current_player.screen.victory if current_player.won?
     end
+  rescue Interrupt
+    Battleship::Screen.bye
+    raise
+  end
+
+  private
+
+  def players_setup
+    # TODO: find a cleaner way to set the opponents
+    players[0].opponent = players[1]
+    players[1].opponent = players[0]
+    players.each(&:setup)
   end
 end

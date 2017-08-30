@@ -9,6 +9,10 @@ Layout/AlignHash:
 Layout/DotPosition:
   EnforcedStyle: trailing
 
+Lint/HandleExceptions:
+  Exclude:
+    - 'exe/battleship'
+
 Style/ClassAndModuleChildren:
   EnforcedStyle: compact
 
@@ -24,6 +28,7 @@ Metrics/MethodLength:
   Exclude:
     - 'lib/battleship/screen.rb'
     - 'lib/battleship/grid.rb'
+    - 'lib/battleship/game.rb'
 
 Metrics/AbcSize:
   Exclude:

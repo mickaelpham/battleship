@@ -29,6 +29,10 @@ class Battleship::Screen
     gets
   end
 
+  def self.bye
+    puts "\n\nQuitting Battleship #{Battleship::VERSION} by Mickael Pham"
+  end
+
   def self.players_prompt
     clear
     Battleship::Game::PLAYERS.times.with_object([]) do |player, names|

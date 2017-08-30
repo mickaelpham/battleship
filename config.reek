@@ -35,6 +35,7 @@ RepeatedConditional:
 TooManyStatements:
   exclude:
     - 'Battleship::Game#initialize'
+    - 'Battleship::Game#run'
     - 'Battleship::Grid#strike'
     - 'Battleship::Player#turn'
     - 'Battleship::Player#setup_ship'
