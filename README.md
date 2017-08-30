@@ -58,5 +58,5 @@ bin/console
 Then, within the Pry console:
 
 ```ruby
-Battleship::Game.new
+Battleship::Game.new.run
 ```
